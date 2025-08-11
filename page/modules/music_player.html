@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+    }
+
+    #music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #5ce1e6;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(92, 225, 230, 0.4);
+      z-index: 9999;
+      transition: all 0.2s ease;
+    }
+
+    #music-toggle:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <button id="music-toggle">🔊</button>
+  <audio id="bg-music"></audio>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+  const playlist = [
+    "/asset/music/the_way_life_goes.mp3",
+    "/asset/music/Wasted.mp3",
+    "/asset/music/tumblr_girls.mp3",
+    "/asset/music/consume.mp3",
+    "/asset/music/judas.mp3",
+    "/asset/music/kimi_no_nawa.mp3",
+    "/asset/music/one_of_the_girls.mp3",
+    "/asset/music/timeless.mp3",
+  ];
+
+  let currentTrack = 0;
+  audio.volume = 0.4;
+  audio.src = playlist[currentTrack];
+
+  function updateNowPlaying() {
+  let rawName = playlist[currentTrack].split("/").pop();
+  let trackName = rawName.replace(".mp3", "")
+                         .replace(/_/g, " ")
+                         .replace(/\b\w/g, c => c.toUpperCase());
+
+  window.parent.postMessage(
+    { type: "updateNowPlaying", track: trackName },
+    "*"
+  );
+}
+
+  function playNext() {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    audio.src = playlist[currentTrack];
+    audio.play();
+    updateNowPlaying();
+  }
+
+  document.getElementById("music-toggle").addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    playNext();
+  });
+
+  audio.addEventListener("ended", playNext);
+
+  audio.addEventListener("loadedmetadata", () => {
+  setInterval(() => {
+    if (!audio.duration) return;
+
+    const percent = (audio.currentTime / audio.duration) * 100;
+    const fill = document.getElementById("music-progress-fill");
+    if (fill) fill.style.width = `${percent}%`;
+  }, 500);
+});
+  setInterval(() => {
+  if (!audio.duration) return;
+
+  const percent = (audio.currentTime / audio.duration) * 100;
+
+  window.parent.postMessage(
+    { type: "musicProgress", percent: percent },
+    "*"
+  );
+}, 500); 
+  </script>
+</body>
+</html>

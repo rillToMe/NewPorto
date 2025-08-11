@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Still Waiting...</title>
+  <link rel="icon" type="image/x-icon" href="/asset/img/porto.svg">
+  <style>
+    body {
+      background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: #fff;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .video-card {
+  background: #111; 
+  border-radius: 20px;
+  max-width: 650px;
+  padding: 0;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8),
+              0 0 25px rgba(92, 225, 230, 0.4),
+              0 0 50px rgba(255, 92, 138, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+.video-card video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  filter: contrast(1.05) brightness(1.1) saturate(1.1);
+}
+
+
+.video-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none; 
+}
+
+
+.video-card:hover {
+  transform: scale(1.02);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9),
+              0 0 35px rgba(255, 92, 138, 0.6),
+              0 0 60px rgba(92, 225, 230, 0.4);
+}
+    
+    .back-btn {
+      display: inline-block;
+      text-align: center;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: transparent;
+      border: 2px solid var(--accent-color, #5ce1e6);
+      border-radius: 12px;
+      color: var(--accent-color, #5ce1e6);
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #ff5c8a;
+      border-color: #ff5c8a;
+      color: #fff;
+      box-shadow: 0 0 10px #ff5c8a;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Project Coming Soon... Meanwhile, Enjoy This:</h1>
+
+  <div class="video-card">
+  <video id="mrbean-video" autoplay muted loop>
+    <source src="/asset/video/mr_bean.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+  <a href="/page/public/project.html" class="back-btn">Back to Portfolio</a>
+
+  <script>
+    const video = document.getElementById("mrbean-video");
+    let soundActivated = false;
+
+    function enableSound() {
+      if (!soundActivated) {
+        video.muted = false;
+        video.currentTime = 0; 
+        video.play().catch(err => console.log(err));
+        soundActivated = true;
+      }
+    }
+
+
+    video.addEventListener("click", enableSound);
+
+    document.body.addEventListener("click", enableSound);
+  </script>
+</body>
+
+<footer>
+    <p>&copy; 2025 Rahmat Aditya - All Rights Reserved.</p>
+  </footer>
+</html>

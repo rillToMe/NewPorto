@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="/page/modules/style.css" />
+  <link rel="icon" type="image/x-icon" href="/asset/img/porto.svg">
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <nav>
+    <a href="/index.html">🏠 Home</a>
+    <a href="/index.html#about">👤 About</a>
+    <a href="#projects">🛠 Projects</a>
+    <a href="/page/public/sertifikat.html">📜Sertifikat & CV</a>
+    <a href="/index.html#contact">📫 Contact</a>
+  </nav>
+
+  <header>
+    <h1>🛠 My Projects</h1>
+    <p>This is a project I have created.!</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>🌌 Body Tracking</h2>
+      <p>Tracking Body With Python.</p>
+      <a href="https://github.com/rillToMe/Body_Tracking" class="btn">View Project</a>
+    </section>
+
+    <section class="card">
+      <h2>📂 File Sharing</h2>
+      <p>File Sharing System (Python Server)
+        A simple web application for secure file sharing on a local network, built with Python Server. Users can upload, view, and download files/folders via a password-protected interface, with a QR code for quick access.
+        Purpose: To facilitate secure file sharing for small teams or personal use, with real-time updates and mobile-friendly access.</p>
+
+        <p>This project is still under development. <strong>(does not yet support sharing large files)</strong> </p>
+        <em>“For Updade : Coming Soon”</em>
+      <a href="https://github.com/rillToMe/file-sharing-system-py" target="_blank" class="btn">View Project</a>
+    </section>
+
+    <section class="card">
+        <h2>🔄 Converter File</h2>
+        <p>
+          Python Flask-based web application for converting image, 
+          video, and audio files to various formats. Supports multiple conversions at once (batch), 
+          downloading results in ZIP format, and real-time processing, wrapped 
+          in an elegant neon dark theme.  
+          Users can easily upload files, select the desired output format, 
+          and download the results directly from the browser.
+        </p>
+
+        <p>
+          This project is designed for personal or small team use, providing 
+          ease and speed in converting various file formats without 
+          the need for additional software.
+        </p>
+
+        <em>“Next update: Coming Soon”</em>
+        <a href="https://github.com/rillToMe/universal-file-converter" target="_blank" class="btn">Lihat Project</a>
+    </section>
+
+
+    <section class="card">
+      <h2>🎮 Cooming Soon</h2>
+      <p>Waiting For... 😼 (Please don't click the button)</p>
+      <a href="waiting.html" class="btn">View Project</a>
+    </section>
+  </main>
+
+<a href="/page/modules/music_player.html" target="_blank" class="btn-music">🎧 Music Mode</a>
+
+<p id="now-playing">
+  Now Playing: <span id="track-name">-</span>
+</p>
+
+
+<iframe 
+  src="/page/modules/music_player.html"
+  style="position: fixed; bottom: 0; right: 0; width: 100px; height: 100px; border: none; z-index: 9999;"
+  allow="autoplay"
+></iframe>
+
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true      
+    });
+    
+  window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollTop / docHeight;
+  document.getElementById("scroll-progress").style.transform = `scaleX(${progress})`;
+});
+  let typingInterval;
+
+  function typeText(element, text, delay = 60) {
+    clearInterval(typingInterval);
+    element.textContent = '';
+    let i = 0;
+    typingInterval = setInterval(() => {
+      element.textContent += text.charAt(i);
+      i++;
+      if (i >= text.length) clearInterval(typingInterval);
+    }, delay);
+  }
+
+  window.addEventListener("message", (event) => {
+    if (event.data.type === "updateNowPlaying") {
+      const trackNameEl = document.getElementById("track-name");
+      const trackName = event.data.track;
+
+      typeText(trackNameEl, trackName, 60);
+    }
+  });
+</script>
+
+  <footer>
+    <p>&copy; 2025 Rahmat Aditya - All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

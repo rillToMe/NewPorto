@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kotak Saran</title>
+  <link rel="icon" type="image/x-icon" href="/asset/img/porto.svg">
+  <link rel="stylesheet" href="/page/modules/style.css">
+
+  <style>
+    
+  </style>
+</head>
+<body>
+
+  <div class="saran-container">
+    <form class="suggestion-form">
+      <h2>📩 Suggestions</h2>
+      <input type="text" name="nama" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <input type="text" name="telepon" placeholder="Phone number (optional)" />
+      <textarea name="pesan" placeholder="Write your suggestions here..." required></textarea>
+      <button class="btn-submit" type="submit">Send</button>
+      <a href="/index.html" class="back-btn">
+      <i class="fa-home"></i>Back</a>
+    </form>
+  </div>
+
+    <div id="popup-notif" class="popup-hidden">
+        💌 Thanks for the advice.!
+    </div>
+
+
+    <div id="video-overlay" class="video-overlay"></div>
+
+    <video id="good-job-video" preload="auto" class="hidden-video">
+        <source src="/asset/video/good_job.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    
+<script>
+const form = document.querySelector(".suggestion-form");
+const popup = document.getElementById("popup-notif");
+const videoOverlay = document.getElementById("video-overlay");
+const goodJobVid = document.getElementById("good-job-video");
+
+const proxyURL = "/api/proxy";
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = {
+    nama: form.querySelector("input[name='nama']").value,
+    email: form.querySelector("input[name='email']").value,
+    telepon: form.querySelector("input[name='telepon']").value,
+    pesan: form.querySelector("textarea[name='pesan']").value,
+  };
+
+  try {
+    const res = await fetch(proxyURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      videoOverlay.classList.add("show");
+      goodJobVid.style.display = "block";
+      goodJobVid.play().then(() => popup.classList.add("popup-visible"));
+
+      goodJobVid.onended = () => {
+        popup.classList.remove("popup-visible");
+        goodJobVid.style.display = "none";
+        videoOverlay.classList.remove("show");
+      };
+
+      form.reset();
+    } else {
+      alert("⚠️ Gagal mengirim saran, coba lagi ya!");
+    }
+  } catch (err) {
+    console.error("DEBUG ERROR:", err);
+    alert("⚠️ Gagal mengirim saran, coba lagi ya!");
+  }
+});
+</script>
+
+</body>
+
+<footer>
+    <p>&copy; 2025 Rahmat Aditya - All Rights Reserved.</p>
+  </footer>
+</html>
+
+

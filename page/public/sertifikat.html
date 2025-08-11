@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Sertifikat & CV</title>
+  <link rel="stylesheet" href="/page/modules/style.css">
+  <link rel="icon" type="image/x-icon" href="/asset/img/porto.svg">
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <nav>
+    <a href="/index.html">🏠 Home</a>
+    <a href="/index.html#about">👤 About</a>
+    <a href="/page/public/project.html">🛠 Projects</a>
+    <a href="sertifikat.html">📜Sertifikat & CV</a>
+    <a href="/index.html#contact">📫 Contact</a> 
+  </nav>
+
+  <header>
+    <h1>Certificate & CV</h1>
+    <p>Here is a collection of my certificates & CV in PDF format, which can be viewed or downloaded.</p>
+  </header>
+
+  <main>
+    <div class="cert-grid">
+      <div class="card cert-card">
+        <img src="/asset/sertifikat_img/cv1.png" alt="Sertifikat Python">
+        <h3>CV</h3>
+        <a href="/asset/sertifikat_pdf/cv/cv.pdf" target="_blank" class="btn">Lihat PDF</a>
+      </div>
+      
+      <div class="card cert-card">
+        <img src="/asset/sertifikat_img/AC-358-29679599-38.png" alt="Sertifikat Python">
+        <h3>Fundamental Python</h3>
+        <a href="/asset/sertifikat_pdf/AGUNA/AC-358-29679599-38.pdf" target="_blank" class="btn">Lihat PDF</a>
+      </div>
+
+      <div class="card cert-card">
+        <img src="/asset/sertifikat_img/udemy_first_sharp.png" alt="C#">
+        <h3>First App With C#</h3>
+        <a href="/asset/sertifikat_pdf/Microsoft Learn/CS/string_dasar.pdf" target="_blank" class="btn">Lihat PDF</a>
+      </div>
+
+      <div class="card cert-card">
+        <img src="/asset/sertifikat_img/string_dasar.png" alt="C#">
+        <h3>String Dasar</h3>
+        <a href="/asset/sertifikat_pdf/Microsoft Learn/CS/string_dasar.pdf" target="_blank" class="btn">Lihat PDF</a>
+      </div>
+
+
+      <div class="card cert-card">
+        <img src="/asset/sertifikat_img/fundamental_ai.png" alt="C#">
+        <h3>Fundamental AI Concepts</h3>
+        <a href="/asset/sertifikat_pdf/Microsoft Learn/AI/fundamental_ai.pdf" target="_blank" class="btn">Lihat PDF</a>
+      </div>
+      
+    </div>
+  </main>
+
+  <script>
+    window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollTop / docHeight;
+  document.getElementById("scroll-progress").style.transform = `scaleX(${progress})`;
+});
+  </script>
+</body>
+
+<footer>
+    <p>&copy; 2025 Rahmat Aditya - All Rights Reserved.</p>
+  </footer>
+</html>

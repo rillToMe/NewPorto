@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rahmat Aditya - Portfolio</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="page/modules/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="/asset/img/porto.svg">
+</head>
+<body>
+  <div id="scroll-progress"></div>
+
+    <div id="tsparticles"></div>
+  <header>
+    <h1>Welcome To My Portofolio</h1>
+    <h1><span class="typing-multi"></span><span class="cursor">|</span></h1>
+    <p class="tagline">👾 Just a Gen Z trying to code the world 💻</p>
+  </header>
+
+  <nav>
+    <a href="#home">🏠 Home</a>
+    <a href="#about">👤 About</a>
+    <a href="page/public/project.html">🛠 Projects</a>
+    <a href="page/public/sertifikat.html">📜Sertifikat & CV</a>
+    <a href="#contact">📫 Contact</a>
+    
+  </nav>
+
+  <div class="profile-box">
+  <img src="asset/img/pp2.png" alt="Profile" class="profile-img" />
+
+</div>
+  <main>
+    <section id="home" data-aos="fade-up">
+  <div class="card" data-aos="fade-up">
+    <h2>Home</h2>
+    <h3>Hello! My name is Rahmat Aditya. 👋</h3>
+    <p>
+      I'm a student passionate about <strong>web development</strong> and <strong>game development</strong>, 
+      focusing on <strong>front-end</strong> and <strong>creative game projects</strong>.
+    </p>
+    <p>
+      This site is my little playground to showcase skills, share projects, and experiment with new concepts.
+    </p>
+  </div>
+</section>
+
+<section id="about" data-aos="fade-up">
+  <div class="card about-card">
+    <h2 data-aos="fade-down">About</h2>
+    <div class="about-content">
+      <div class="about-text" data-aos="fade-left">
+        <p>
+          Hey there, I'm Adit — just a student who's been curious about tech...
+        </p>
+        <p>
+          Outside of coding, I enjoy gaming, binge-watching anime...
+        </p>
+        <p>
+          My goal? To create websites & game that are cool, useful...
+        </p>
+        <p>
+          For education, I went through:<br>
+          • SD: SDN 04 Guguak VIII Koto<br>
+          • MTS: MTSn 3 Lima Puluh Kota<br>
+          • SMK: SMKN 4 Payakumbuh
+        </p>
+        <p>
+          Address: Kuranji, Guguak VIII Koto, Kabupaten Lima Puluh Kota
+        </p>
+        <p>
+          <em>Moto hidup: “Ngoding sambil healing, error langsung turu.”</em>
+        </p>
+      </div>
+      <div class="character-box" data-aos="fade-right">
+        <img src="asset/img/alya.png" alt="Alya" class="character-img">
+        <img src="asset/img/changli.png" alt="Changli" class="character-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+  <div class="card" data-aos="fade-up">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+      <li data-aos="fade-left"><i class="fas fa-envelope"></i> <a href="mailto:rahmataditya2817@gmail.com">Email</a></li>
+      <li data-aos="fade-right"><i class="fab fa-tiktok"></i> <a href="https://www.tiktok.com/@goodvibes_music28" target="_blank">TikTok</a></li>
+      <li data-aos="fade-left"><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/rill_lyrics/" target="_blank">Instagram</a></li>
+      <li data-aos="fade-right"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rahmat-aditya-932666319" target="_blank">LinkedIn</a></li>
+      <li data-aos="fade-left"><i class="fab fa-github"></i> <a href="https://github.com/rillToMe" target="_blank">GitHub</a></li>
+      <li data-aos="fade-right"><i class="	fab fa-whatsapp"></i> <a href="https://wa.me/6282286523626" target="_blank">WhatsApp</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="suggestion-cta glass" data-aos="fade-up">
+  <h2>💬 Have any suggestions or feedback?</h2>
+  <p>I am open to any criticism and creative ideas you may have!</p>
+  <a href="page/public/saran.html" class="btn btn-cta" data-aos="fade-down">📝 Beri Saran</a>
+</section>
+
+
+  </main>
+</body>
+
+<audio id="keySound" src="typig.wav" preload="auto"></audio>
+<audio id="bg-music" autoplay></audio>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollTop / docHeight;
+  document.getElementById("scroll-progress").style.transform = `scaleX(${progress})`;
+});
+    const texts = ["Gamers", "GameDev", "Manga Readers", "Anime Lovers", "AlyaHusband", "Changli Husband"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    const typingElement = document.querySelector(".typing-multi");
+    const keySound = document.getElementById("keySound");
+
+    function playSound() {
+      keySound.currentTime = 0;
+      keySound.play();
+    }
+
+    AOS.init({
+    duration: 1000,
+    once: true      
+    });
+
+    function type() {
+      if (count === texts.length) {
+        count = 0;
+      }
+
+      currentText = texts[count];
+      letter = currentText.slice(0, ++index);
+
+      typingElement.textContent = letter;
+      playSound();
+
+      if (letter.length === currentText.length) {
+        setTimeout(erase, 1500);
+      } else {
+        setTimeout(type, 100);
+      }
+    }
+
+    function erase() {
+      letter = currentText.slice(0, --index);
+      typingElement.textContent = letter;
+      playSound();
+
+      if (letter.length === 0) {
+        count++;
+        setTimeout(type, 300);
+      } else {
+        setTimeout(erase, 50);
+      }
+    }
+
+    type();
+  });
+</script>
+
+
+
+<a href="#" class="btn-music">🎧 Music Mode</a>
+<p id="now-playing">
+  Now Playing: <span id="track-name">-</span>
+</p>
+
+
+
+<iframe 
+  src="page/modules/music_player.html"
+  style="position: fixed; bottom: 0; right: 0; width: 100px; height: 100px; border: none; z-index: 9999;"
+  allow="autoplay"
+></iframe>
+
+<script>
+  
+  let typingInterval;
+
+  function typeText(element, text, delay = 60) {
+    clearInterval(typingInterval);
+    element.textContent = '';
+    let i = 0;
+    typingInterval = setInterval(() => {
+      element.textContent += text.charAt(i);
+      i++;
+      if (i >= text.length) clearInterval(typingInterval);
+    }, delay);
+  }
+
+  window.addEventListener("message", (event) => {
+    if (event.data.type === "updateNowPlaying") {
+      const trackNameEl = document.getElementById("track-name");
+      const trackName = event.data.track;
+
+      typeText(trackNameEl, trackName, 60);
+    }
+  });
+</script>
+
+
+<footer>
+    <p>&copy; 2025 Rahmat Aditya - All Rights Reserved.</p>
+  </footer>
+</html>
