@@ -611,3 +611,35 @@ a:hover::after {
   box-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
 }
 
+.pdf-actions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-top:12px;
+}
+
+.download-circle{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#5ce1e6;
+  box-shadow: 0 0 12px rgba(92,225,230,.35);
+  transition:all .25s ease;
+  text-decoration:none;
+}
+
+.download-circle i{
+  font-size:1.15rem;
+  color:#0f0f1a;
+  line-height:1;
+  pointer-events:none;
+}
+
+.download-circle:hover{
+  background:#ff5c8a;
+  transform:scale(1.08);
+  box-shadow:0 0 14px rgba(255,92,138,.55);
+}
