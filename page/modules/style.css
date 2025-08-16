@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
+
 html {
   scroll-behavior: smooth;
 }
@@ -27,7 +28,7 @@ nav {
   top: 0;
   z-index: 999;
   box-shadow: 0 5px 15px rgba(92, 225, 230, 0.2);
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid var();
   backdrop-filter: blur(10px);
 }
 
@@ -60,7 +61,6 @@ nav a:hover {
 nav a:hover::after {
   width: 100%;
 }
-
 
 main {
   padding: 2rem;
@@ -180,13 +180,6 @@ img {
 }
 #music-toggle:hover {
   transform: scale(1.1);
-}
-
-.skill-list {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-  margin-top: 1rem;
 }
 
 .skill-list li {
@@ -411,8 +404,6 @@ a:hover::after {
   color: #000;
 }
 
-
-
 #popup-notif {
   position: fixed;
   top: 30px;
@@ -431,10 +422,7 @@ a:hover::after {
   z-index: 9998;
 }
 
-#popup-notif.popup-visible {
-  opacity: 1;
-  pointer-events: auto;
-}
+#popup-notif
 
 .hidden-video {
   display: none;
@@ -447,11 +435,6 @@ a:hover::after {
   border-radius: 16px;
   box-shadow: 0 0 30px rgba(255, 92, 138, 0.5);
   background-color: #000;
-}
-
-.show-video {
-  display: block;
-  animation: fadeIn 0.4s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -470,11 +453,7 @@ a:hover::after {
   z-index: 9997;
 }
 
-.video-overlay.show {
-  visibility: visible;
-  opacity: 1;
-}
-
+.video-overlay
 
 .back-btn {
   display: inline-flex;
@@ -483,8 +462,8 @@ a:hover::after {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
   background: transparent;
-  color: var(--accent-color, #5ce1e6);
-  border: 2px solid var(--accent-color, #5ce1e6);
+  color: var(#5ce1e6);
+  border: 2px solid var(#5ce1e6);
   border-radius: 12px;
   text-decoration: none;
   font-weight: bold;
@@ -534,7 +513,6 @@ a:hover::after {
   align-items: center;
 }
 
-
 .character-img {
   max-width: 200px;
   height: auto;
@@ -552,27 +530,6 @@ a:hover::after {
 .character-img:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px rgb(188, 140, 178);
-}
-
-.image-box {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.img-anim {
-  width: 200px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation-fill-mode: forwards;
-}
-
-.img-left {
-  animation: fadeUpLeft 1s ease-out;
-}
-
-.img-right {
-  animation: fadeDownRight 1s ease-out 0.3s;
 }
 
 @keyframes fadeUpLeft {
