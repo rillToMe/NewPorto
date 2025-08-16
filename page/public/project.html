@@ -84,17 +84,19 @@
 ></iframe>
 
 <script>
-  AOS.init({
-    duration: 1000,
-    once: true      
-    });
-    
+
   window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const progress = scrollTop / docHeight;
   document.getElementById("scroll-progress").style.transform = `scaleX(${progress})`;
 });
+  
+  AOS.init({
+    duration: 1000,
+    once: true      
+    });
+     
   let typingInterval;
 
   function typeText(element, text, delay = 60) {
@@ -123,3 +125,4 @@
   </footer>
 </body>
 </html>
+
